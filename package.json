@@ -10,16 +10,36 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "forth",
-            "aliases": ["Forth", "forth"],
-            "extensions": [".f",".fs",".frt",".fth",".4th",".forth"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "forth",
-            "scopeName": "source.forth",
-            "path": "./syntaxes/forth.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "forth",
+                "aliases": [
+                    "Forth",
+                    "forth"
+                ],
+                "extensions": [
+                    ".f",
+                    ".fs",
+                    ".frt",
+                    ".fth",
+                    ".4th",
+                    ".forth"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "forth",
+                "scopeName": "source.forth",
+                "path": "./syntaxes/forth.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "forth",
+                "path": ".vscode/forth-snippets.code-snippets"
+            }
+        ]
     }
 }

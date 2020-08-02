@@ -3,27 +3,107 @@
 	"name": "Forth",
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+			"include": "#all-includes"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.forth",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.forth",
-			"begin": "\"",
-			"end": "\"",
+		"all-includes": {
 			"patterns": [
 				{
-					"name": "constant.character.escape.forth",
-					"match": "\\\\."
+					"include": "#comments"
+				},
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#word-defs"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.parantheses.forth",
+					"begin": "(?<=^|\\s)\\(\\s",
+					"end": "\\)"
+				},
+				{
+					"comment": "\\ line comment",
+					"match": "(?<=^|\\s)(\\\\[\\s\\S]*$)",
+					"name": "comment.line.backslash.forth"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.forth",
+					"match": "\\b(if|then|else)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.forth",
+					"begin": "\\.\"",
+					"end": "\""
+				},
+				{
+					"name": "string.quoted.double.forth",
+					"begin": "s\"",
+					"end": "\""
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"match": "(?i:(?<=^|\\s)(TRUE|FALSE|BL|PI|CELL|C/L|R/O|W/O|R/W)(?=\\s))",
+					"name": "constant.language.forth"
+				},
+				{
+					"match": "(?<=^|\\s)([$#%]?[-+]?[0-9]+((\\.[0-9]*)?e(-?[0-9]+)|\\.?[0-9a-fA-F]*))(?=\\s)",
+					"name": "constant.numeric.forth"
+				},
+				{
+					"match": "(?<=^|\\s)('\\S')(?=\\s)",
+					"name": "constant.character.forth"
+				}
+			]
+		},
+		"word-defs": {
+			"begin": "(^:|\\s:)\\s(\\S+)\\s|(?i:(:NONAME))",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.other.compile-only.forth"
+				},
+				"2": {
+					"name": "entity.name.function.forth"
+				},
+				"3": {
+					"name": "keyword.other.compile-only.forth"
+				},
+				"4": {
+					"name": "keyword.other.word.forth"
+				}
+			},
+			"end": "(;(?i:CODE)?)",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.other.compile-only.forth"
+				}
+			},
+			"name": "meta.block.forth",
+			"patterns": [
+				{
+					"include": "#all-includes"
 				}
 			]
 		}
