@@ -1,0 +1,25 @@
+{
+    "name": "forth-language",
+    "displayName": "Forth Language",
+    "description": "Forth Language Support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.47.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "forth",
+            "aliases": ["Forth", "forth"],
+            "extensions": [".f",".fs",".frt",".fth",".4th",".forth"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "forth",
+            "scopeName": "source.forth",
+            "path": "./syntaxes/forth.tmLanguage.json"
+        }]
+    }
+}
