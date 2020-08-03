@@ -4,7 +4,6 @@ This is the README for your extension "forth-language". After writing up a brief
 
 ## Features
 
-
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
 For example if there is an image subfolder under your extension project workspace:
