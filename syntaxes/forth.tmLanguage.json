@@ -1,5 +1,4 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Forth",
 	"patterns": [
 		{
@@ -22,6 +21,9 @@
 					"include": "#constants"
 				},
 				{
+					"include": "#storage"
+				},
+				{
 					"include": "#word-defs"
 				}
 			]
@@ -34,8 +36,13 @@
 					"end": "\\)"
 				},
 				{
+					"comment": "gForth line comment",
+					"match": "(?<=^|\\s)(\\\\[Gg] .*$)",
+					"name": "comment.line.backslash-g.forth"
+				},
+				{
 					"comment": "\\ line comment",
-					"match": "(?<=^|\\s)(\\\\[\\s\\S]*$)",
+					"match": "(?<=^|\\s)(\\\\\\s.*$)",
 					"name": "comment.line.backslash.forth"
 				}
 			]
@@ -43,8 +50,24 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.control.forth",
-					"match": "\\b(if|then|else)\\b"
+					"match": "(?<=^|\\s)\\[(?i:(\\?DO|\\+LOOP|AGAIN|BEGIN|DEFINED|DO|ELSE|ENDIF|FOR|IF|IFDEF|IFUNDEF|LOOP|NEXT|REPEAT|THEN|UNTIL|WHILE))\\](?=\\s)",
+					"name": "keyword.control.immediate.forth"
+				},
+				{
+					"match": "(?<=^|\\s)(?i:(-DO|\\-LOOP|\\?DO|\\?LEAVE|\\+DO|\\+LOOP|ABORT\\\"|AGAIN|AHEAD|BEGIN|CASE|DO|ELSE|ENDCASE|ENDIF|ENDOF|ENDTRY\\-IFERROR|ENDTRY|FOR|IF|IFERROR|LEAVE|LOOP|NEXT|RECOVER|REPEAT|RESTORE|THEN|TRY|U\\-DO|U\\+DO|UNTIL|WHILE))(?=\\s)",
+					"name": "keyword.control.compile-only.forth"
+				},
+				{
+					"match": "(?<=^|\\s)(?i:(~~|BREAK:|BREAK\"|DBG))(?=\\s)",
+					"name": "keyword.other.warning.forth"
+				},
+				{
+					"match": "(?<=^|\\s)(?i:(COMPILE-ONLY|IMMEDIATE|IS|RESTRICT|TO|WHAT'S|]))(?=\\s)",
+					"name": "keyword.other.immediate.forth"
+				},
+				{
+					"match": "(?<=^|\\s)(?i:('|<IS>|<TO>|CHAR|END-STRUCT|INCLUDE[D]?|LOAD|NEEDS|REQUIRE[D]?|REVISION|SEE|STRUCT|THRU|USE|OBJECT|CLASS|END-CLASS|M:|;M|PROTECTED|PUBLIC|interface|end-interface))(?=\\s)",
+					"name": "keyword.other.non-immediate.forth"
 				}
 			]
 		},
@@ -52,13 +75,13 @@
 			"patterns": [
 				{
 					"name": "string.quoted.double.forth",
-					"begin": "\\.\"",
+					"begin": "\\s+(s|\\.|abort)\"",
 					"end": "\""
 				},
 				{
-					"name": "string.quoted.double.forth",
-					"begin": "s\"",
-					"end": "\""
+					"comment": "",
+					"match": "(?i:((?<=INCLUDE)|(?<=NEEDS)|(?<=REQUIRE)|(?<=USE)))[ ]\\S+(?=\\s)",
+					"name": "string.unquoted.forth"
 				}
 			]
 		},
@@ -78,8 +101,17 @@
 				}
 			]
 		},
+		"storage": {
+			"patterns": [
+				{
+					"comment": "",
+					"match": "(?<=^|\\s)(?i:(2CONSTANT|2VARIABLE|ALIAS|CONSTANT|CREATE-INTERPRET/COMPILE[:]?|CREATE|DEFER|FCONSTANT|FIELD|FVARIABLE|USER|VALUE|VARIABLE|VOCABULARY|METHOD|OVERRIDES|implementation|selector|inst-value|inst-var))(?=\\s)",
+					"name": "storage.type.forth"
+				}
+			]
+		},
 		"word-defs": {
-			"begin": "(^:|\\s:)\\s(\\S+)\\s|(?i:(:NONAME))",
+			"begin": "(^:|\\s:)\\s+(\\S+)\\s|(?i:(:NONAME))",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.compile-only.forth"
