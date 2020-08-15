@@ -36,6 +36,11 @@
 					"end": "\\)"
 				},
 				{
+					"name": "comment.block.parantheses.forth",
+					"begin": "(?<=^|\\s)\\\\\\*\\s",
+					"end": "\\*\\\\"
+				},
+				{
 					"comment": "gForth line comment",
 					"match": "(?<=^|\\s)(\\\\[Gg] .*$)",
 					"name": "comment.line.backslash-g.forth"
