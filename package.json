@@ -25,7 +25,7 @@
                     ".4th",
                     ".forth"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "language-configuration.json"
             }
         ],
         "grammars": [
@@ -38,7 +38,7 @@
         "snippets": [
             {
                 "language": "forth",
-                "path": ".vscode/forth-snippets.code-snippets"
+                "path": "forth-snippets.code-snippets"
             }
         ]
     }
