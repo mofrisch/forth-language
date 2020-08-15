@@ -75,12 +75,7 @@
 			"patterns": [
 				{
 					"name": "string.quoted.double.forth",
-					"begin": "\\.\"",
-					"end": "\""
-				},
-				{
-					"name": "string.quoted.double.forth",
-					"begin": "s\"",
+					"begin": "\\s+(s|\\.|abort)\"",
 					"end": "\""
 				},
 				{
