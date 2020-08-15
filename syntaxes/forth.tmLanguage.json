@@ -38,7 +38,7 @@
 				{
 					"name": "comment.block.parantheses.forth",
 					"begin": "(?<=^|\\s)\\\\\\*\\s",
-					"end": "\\*\\\\"
+					"end": "\\\\"
 				},
 				{
 					"comment": "gForth line comment",
