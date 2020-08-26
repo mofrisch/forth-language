@@ -19,16 +19,10 @@
     ],
     "comments": {
         "blockComment": [
-            "\\(",
-            "\\)"
+            "(*",
+            "*)"
         ],
         "lineComment": "\\"
     },
     "wordPattern": "\\S+",
-    "folding": {
-        "markers": {
-            "start": "^\\s*\\\\\\s+#?region\\b",
-            "end": "^\\s*\\\\\\s+#?endregion\\b"
-        }
-    }
 }

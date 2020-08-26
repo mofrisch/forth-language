@@ -16,7 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 	"if then clause": {
-		"scope": "forth",
+		"scope": "8th",
 		"prefix": "ift",
 		"body": [
 			"${1:condition} if",
@@ -26,7 +26,7 @@
 		]
 	},
 	"if then else clause": {
-		"scope": "forth",
+		"scope": "8th",
 		"prefix": "ife",
 		"body": [
 			"${1:condition} if",
@@ -38,51 +38,12 @@
 		]
 	},
 	"word definitiom": {
-		"scope": "forth",
+		"scope": "8th",
 		"prefix": "def",
 		"body": [
-			": ${1:word} ( ${2:before} -- ${3:after} ) \\ ${4:description}",
+			"${1:description}",
+			": ${2:word} \\ ${3:before} -- ${4:after} ",
 			"\t${5:definition} ;",
-			"$0"
-		]
-	},
-	"region": {
-		"scope": "forth",
-		"prefix": "reg",
-		"body": [
-			"\\ #region ${1:title}",
-			"\\ ${2:content}",
-			"\\ #endregion",
-			"",
-			""
-		]
-	},
-	"file header": {
-		"scope": "forth",
-		"prefix": "file",
-		"body": [
-			".( ${1:name})",
-			"",
-			"\\ ${2:file}",
-			"\\ ${3:description}",
-			"",
-			"\\ Author: Moritz Frisch",
-			"\\ Copyright (C) 2020 Free Software Foundation, Inc.",
-			"",
-			"\\ #region License",
-			"\\ This program is free software; you can redistribute it and/or modify it",
-			"\\ under the terms of the GNU General Public License as published by the",
-			"\\ Free Software Foundation; either version 3, or (at your option) any",
-			"\\ later version.",
-			"",
-			"\\ This program is distributed in the hope that it will be useful,",
-			"\\ but WITHOUT ANY WARRANTY; without even the implied warranty of",
-			"\\ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
-			"\\ GNU General Public License for more details.",
-			"",
-			"\\ You should have received a copy of the GNU General Public License",
-			"\\ along with this program. If not, see http: //www.gnu.org/licenses/.",
-			"\\ #endregion",
 			"",
 			"$0"
 		]
